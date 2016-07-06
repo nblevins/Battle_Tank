@@ -19,5 +19,10 @@ public:
     
     virtual void BeginPlay() override;
     
+    // Called every frame
+    virtual void Tick( float DeltaSeconds ) override;
+
+    //Start the tank moving the barrel so that shot goes to crosshair
+    void AimTowardsCrosshair();
 	
 };
