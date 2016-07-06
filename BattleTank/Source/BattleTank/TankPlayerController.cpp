@@ -9,16 +9,13 @@ void ATankPlayerController::BeginPlay()
 {
     Super::BeginPlay();
     
-    UE_LOG(LogTemp, Warning, TEXT("Beginning play..."));
-    
     ATank* ControlledTank = GetControlledTank();
     
     if (!ControlledTank) {
         UE_LOG(LogTemp, Warning, TEXT("No Tank Possesed"));
     } else {
-        UE_LOG(LogTemp, Warning, TEXT("There is a Tank Possesed"));
         FString Name = ControlledTank->GetName();
-        UE_LOG(LogTemp, Warning, TEXT("The Posessed Tank is named : %s"), *Name);
+        UE_LOG(LogTemp, Warning, TEXT("The Posessed  Player Tank is named : %s"), *Name);
     }
     
 }
