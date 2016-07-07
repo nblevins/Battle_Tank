@@ -26,6 +26,7 @@ void ATankPlayerController::Tick( float DeltaTime )
 {
     Super::Tick( DeltaTime );
     
+    AimTowardsCrosshair();
 }
 
 
@@ -39,6 +40,28 @@ void ATankPlayerController::AimTowardsCrosshair()
 {
     if (!GetControlledTank()){return;}
     
+    FVector HitLocation; // OUT parameter
+    
+    GetSightRayHitLocation(HitLocation);
+    
+    UE_LOG(LogTemp, Warning, TEXT("Hit Location passed back: %s"), *HitLocation.ToString());
+    
+    
     //Get world location if linetrace through crosshair
     
+}
+
+bool ATankPlayerController::GetSightRayHitLocation(FVector &HitLocation) const // HitLocation is an OUT param
+{
+    
+    FVector PlayerViewPointLocation;
+    FRotator PlayerViewPointRotation;
+    
+    GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(PlayerViewPointLocation,PlayerViewPointRotation);
+    
+    UE_LOG(LogTemp, Warning, TEXT("Location: %s"), *PlayerViewPointLocation.ToString());
+    
+    HitLocation = PlayerViewPointLocation + (PlayerViewPointRotation.Vector() * 10000.f);
+    
+    return true;
 }
