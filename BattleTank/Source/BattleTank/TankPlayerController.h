@@ -32,5 +32,7 @@ private:
     void AimTowardsCrosshair();
     
     bool GetSightRayHitLocation(FVector &HitLocation) const; // HitLocation is an OUT param
+    
+    bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
 	
 };
