@@ -33,6 +33,9 @@ void ATankAIController::Tick( float DeltaTime )
     
     if (GetPlayerTank())
     {
+        // Move towards player
+        
+        //Aim at player's tank
         FVector AimLocation = GetPlayerTank()->GetActorLocation();
         
         if (GetControlledTank()) {
